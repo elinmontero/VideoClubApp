@@ -1,0 +1,52 @@
+﻿@model Actor
+
+@{
+    ViewData["Title"] = "Update actor";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Update Actor</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group text-center">
+                        <img id="ProfilePicturePreview"  class="border-info rounded-circle" style="max-width: 150px" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FotoPerfilActor" class="control-label"></label>
+                        <input asp-for="FotoPerfilActor" class="form-control" />
+                        <span asp-validation-for="FotoPerfilActor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NombreActor" class="control-label"></label>
+                        <input asp-for="NombreActor" class="form-control" />
+                        <span asp-validation-for="NombreActor" class="text-danger"></span>
+                    </div>                   
+
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('FotoPerfilActor');
+            output.src = $("#FotoPerfilActor").val();
+        })
+        $("#FotoPerfilActor").on("change", function () {
+            var output = document.getElementById('FotoPerfilActor');
+            output.src = $(this).val();
+        })
+    </script>
+}
